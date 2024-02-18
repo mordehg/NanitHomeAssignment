@@ -8,14 +8,14 @@
 import Foundation
 import UIKit
 
-protocol addImageDelegate {
+protocol AddImageDelegate {
     func imageDidChoose(pickedImage: UIImage)
 }
 
 class AddImageVC: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     let imagePicker = UIImagePickerController()
     var onScreenVC: UIViewController?
-    var delegate: addImageDelegate?
+    var delegate: AddImageDelegate?
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {

@@ -111,7 +111,7 @@ extension ViewController: UITextFieldDelegate {
 }
 
 // Image handaling
-extension ViewController: addImageDelegate {
+extension ViewController: AddImageDelegate {
     func imageDidChoose(pickedImage: UIImage) {
         self.imageView.image = pickedImage
     }

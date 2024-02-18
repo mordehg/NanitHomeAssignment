@@ -27,6 +27,9 @@ class ViewController: UIViewController {
         addImageController.onScreenVC = self
         addImageController.delegate = self
         
+        // Set the title of the back button to an empty string to remove the default "Back" text (for next screen)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
         birthDatePicker.maximumDate = Date()
         retrieveBabyInfo()
     }
@@ -49,6 +52,8 @@ class ViewController: UIViewController {
         if let name = nameTextField.text {
             SharedData.sharedData.babyInfo = Baby(name: name, birthDate:  birthDatePicker.date, picture: self.imageView.image)
             saveBabyInfo() // For next Launch
+            // Go to the next screen
+            performSegue(withIdentifier: "detailsToBirthday", sender: self)
         }
     }
     

@@ -17,6 +17,8 @@
 		527A0DEA2B820C0D0090199F /* Baby.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A0DE92B820C0D0090199F /* Baby.swift */; };
 		527A0DEC2B820C1F0090199F /* SharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A0DEB2B820C1F0090199F /* SharedData.swift */; };
 		527A0DEF2B820C7C0090199F /* StringAndDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A0DEE2B820C7C0090199F /* StringAndDate.swift */; };
+		527A0DF12B820E850090199F /* HappyBirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A0DF02B820E850090199F /* HappyBirthdayViewController.swift */; };
+		527A0DF32B820EDE0090199F /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A0DF22B820EDE0090199F /* UIColorExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		527A0DE92B820C0D0090199F /* Baby.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Baby.swift; sourceTree = "<group>"; };
 		527A0DEB2B820C1F0090199F /* SharedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedData.swift; sourceTree = "<group>"; };
 		527A0DEE2B820C7C0090199F /* StringAndDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringAndDate.swift; sourceTree = "<group>"; };
+		527A0DF02B820E850090199F /* HappyBirthdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyBirthdayViewController.swift; sourceTree = "<group>"; };
+		527A0DF22B820EDE0090199F /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,12 +68,12 @@
 		527A0DCB2B81DB9D0090199F /* NanitHomeAssignment */ = {
 			isa = PBXGroup;
 			children = (
-				527A0DED2B820C6D0090199F /* Extensions */,
+				527A0DF42B820EFC0090199F /* View */,
 				527A0DE82B820C040090199F /* Model */,
+				527A0DED2B820C6D0090199F /* Extensions */,
 				527A0DE02B81E0380090199F /* Custom */,
 				527A0DCC2B81DB9D0090199F /* AppDelegate.swift */,
 				527A0DCE2B81DB9D0090199F /* SceneDelegate.swift */,
-				527A0DD02B81DB9D0090199F /* ViewController.swift */,
 				527A0DD22B81DB9D0090199F /* Main.storyboard */,
 				527A0DD52B81DB9E0090199F /* Assets.xcassets */,
 				527A0DD72B81DB9E0090199F /* LaunchScreen.storyboard */,
@@ -99,8 +103,18 @@
 			isa = PBXGroup;
 			children = (
 				527A0DEE2B820C7C0090199F /* StringAndDate.swift */,
+				527A0DF22B820EDE0090199F /* UIColorExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		527A0DF42B820EFC0090199F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				527A0DD02B81DB9D0090199F /* ViewController.swift */,
+				527A0DF02B820E850090199F /* HappyBirthdayViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,6 +192,8 @@
 				527A0DE22B81E0480090199F /* AddImageVC.swift in Sources */,
 				527A0DD12B81DB9D0090199F /* ViewController.swift in Sources */,
 				527A0DCD2B81DB9D0090199F /* AppDelegate.swift in Sources */,
+				527A0DF12B820E850090199F /* HappyBirthdayViewController.swift in Sources */,
+				527A0DF32B820EDE0090199F /* UIColorExtension.swift in Sources */,
 				527A0DEA2B820C0D0090199F /* Baby.swift in Sources */,
 				527A0DCF2B81DB9D0090199F /* SceneDelegate.swift in Sources */,
 				527A0DEF2B820C7C0090199F /* StringAndDate.swift in Sources */,

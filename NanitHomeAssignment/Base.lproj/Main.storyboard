@@ -154,6 +154,21 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nanitLogo" translatesAutoresizingMaskIntoConstraints="NO" id="ZAb-Vs-sR9">
                                 <rect key="frame" x="159.5" y="500.5" width="56" height="20"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GUf-LE-k61">
+                                <rect key="frame" x="98" y="542.5" width="179" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="4AK-u1-rFm"/>
+                                    <constraint firstAttribute="width" constant="179" id="zuo-jQ-JaF"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" image="shareIcon" imagePlacement="trailing" title="Share the news" cornerStyle="capsule">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="16"/>
+                                    <color key="baseBackgroundColor" red="0.93725490196078431" green="0.4823529411764706" blue="0.4823529411764706" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="shareButtonDidTapped:" destination="U9i-0I-yUd" eventType="touchUpInside" id="bPZ-W7-1t2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="I0l-bE-Dhs"/>
                         <color key="backgroundColor" red="0.85490196078431369" green="0.94509803921568625" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -167,6 +182,7 @@
                             <constraint firstItem="W4C-dg-Wjh" firstAttribute="top" secondItem="tNr-vM-pwC" secondAttribute="bottom" constant="13" id="HY4-JA-v4b"/>
                             <constraint firstItem="ikd-th-wYT" firstAttribute="centerY" secondItem="W4C-dg-Wjh" secondAttribute="centerY" id="QjM-mv-y6y"/>
                             <constraint firstItem="F8X-DX-9Cr" firstAttribute="centerX" secondItem="FOK-1y-b6U" secondAttribute="centerX" id="RdW-E0-Q12"/>
+                            <constraint firstItem="GUf-LE-k61" firstAttribute="top" secondItem="ZAb-Vs-sR9" secondAttribute="bottom" constant="22" id="ZqJ-Ox-yT0"/>
                             <constraint firstItem="JBT-da-zmc" firstAttribute="top" secondItem="FOK-1y-b6U" secondAttribute="top" id="a0n-LL-JhK"/>
                             <constraint firstItem="tNr-vM-pwC" firstAttribute="top" secondItem="I0l-bE-Dhs" secondAttribute="top" constant="20" id="cgG-mM-dHq"/>
                             <constraint firstItem="W4C-dg-Wjh" firstAttribute="centerX" secondItem="FOK-1y-b6U" secondAttribute="centerX" id="k6B-a1-qm7"/>
@@ -175,6 +191,7 @@
                             <constraint firstItem="ZAb-Vs-sR9" firstAttribute="top" secondItem="F8X-DX-9Cr" secondAttribute="bottom" constant="15" id="oiy-c2-4HG"/>
                             <constraint firstItem="ZAb-Vs-sR9" firstAttribute="centerX" secondItem="FOK-1y-b6U" secondAttribute="centerX" id="sPX-Hg-26z"/>
                             <constraint firstAttribute="bottom" secondItem="JBT-da-zmc" secondAttribute="bottom" id="t0o-k3-XnX"/>
+                            <constraint firstItem="GUf-LE-k61" firstAttribute="centerX" secondItem="FOK-1y-b6U" secondAttribute="centerX" id="wI0-3r-f2f"/>
                             <constraint firstItem="F8X-DX-9Cr" firstAttribute="top" secondItem="Ti0-QZ-vgA" secondAttribute="bottom" constant="20" id="y6b-tK-buU"/>
                         </constraints>
                     </view>
@@ -185,6 +202,7 @@
                         <outlet property="background" destination="JBT-da-zmc" id="obR-Bg-Ajm"/>
                         <outlet property="backgroungView" destination="FOK-1y-b6U" id="kQa-YC-PVZ"/>
                         <outlet property="numberTypeLabel" destination="Ti0-QZ-vgA" id="cuZ-wu-REF"/>
+                        <outlet property="shareButton" destination="GUf-LE-k61" id="gHc-GJ-cW1"/>
                         <outlet property="titleLabel" destination="tNr-vM-pwC" id="jTt-gf-RMo"/>
                     </connections>
                 </viewController>
@@ -218,6 +236,7 @@
         <image name="leftSwirls" width="51.5" height="45"/>
         <image name="nanitLogo" width="56.5" height="20"/>
         <image name="rightSwirls" width="51.5" height="45"/>
+        <image name="shareIcon" width="31" height="34"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

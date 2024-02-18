@@ -22,6 +22,7 @@ class HappyBirthdayViewController: UIViewController, AddImageDelegate {
     @IBOutlet weak var numberTypeLabel: UILabel!
     @IBOutlet weak var babyImage: UIImageView!
     @IBOutlet weak var background: UIImageView!
+    @IBOutlet weak var shareButton: UIButton!
     
     let addImageIcon = UIButton(type: .custom)
     let addImageController = AddImageVC()
@@ -116,6 +117,11 @@ class HappyBirthdayViewController: UIViewController, AddImageDelegate {
         SharedData.sharedData.babyInfo?.picture = pickedImage
         saveImage()
     }
+    @IBAction func shareButtonDidTapped(_ sender: Any) {
+        if let screenCapture = captureScreen() {
+            shareImage(image: screenCapture)
+        }
+    }
 }
 
 extension HappyBirthdayViewController {
@@ -131,5 +137,38 @@ extension HappyBirthdayViewController {
         } catch {
             print("Error saving image: \(error)")
         }
+    }
+    
+    func captureScreen() -> UIImage? {
+        // Hide all the elements that should not be included
+        navigationController?.navigationBar.topItem?.setHidesBackButton(true, animated: false)
+        addImageIcon.isHidden = true
+        shareButton.isHidden = true
+        
+        // Get the main screen bounds
+        let mainScreenBounds = UIScreen.main.bounds
+        
+        // Create a renderer with the main screen bounds
+        let renderer = UIGraphicsImageRenderer(bounds: mainScreenBounds)
+        
+        // Render the main screen contents to an image
+        let image = renderer.image { context in
+            UIApplication.shared.keyWindow?.layer.render(in: context.cgContext)
+        }
+        
+        // return all the hidden elements
+        navigationController?.navigationBar.topItem?.setHidesBackButton(false, animated: false)
+        addImageIcon.isHidden = false
+        shareButton.isHidden = false
+        
+        return image
+    }
+    
+    func shareImage(image: UIImage) {
+        // Create a UIActivityViewController with the image to share
+        let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        
+        // Present the UIActivityViewController
+        present(activityViewController, animated: true, completion: nil)
     }
 }

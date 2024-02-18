@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  HappyBirthday
+//  NanitHomeAssignment
 //
 //  Created by Gili Yaakov on 14/02/2024.
 //
@@ -27,9 +27,8 @@ class ViewController: UIViewController {
         addImageController.onScreenVC = self
         addImageController.delegate = self
         
-        self.finishButton.isEnabled = false
-        self.finishButton.tintColor = UIColor.gray
         birthDatePicker.maximumDate = Date()
+        retrieveBabyInfo()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,6 +38,7 @@ class ViewController: UIViewController {
         birthDateLabel.text = "Birthday:"
         addPictureButton.setTitle("Add Picture", for: .normal)
         finishButton.setTitle("Show birthday screen", for: .normal)
+        imageView.image = SharedData.sharedData.babyInfo?.picture
     }
     
     @IBAction func addPitureDidTapped(_ sender: Any) {
@@ -46,6 +46,38 @@ class ViewController: UIViewController {
     }
     
     @IBAction func finishButtonDidTapped(_ sender: Any) {
+        if let name = nameTextField.text {
+            SharedData.sharedData.babyInfo = Baby(name: name, birthDate:  birthDatePicker.date, picture: self.imageView.image)
+            saveBabyInfo() // For next Launch
+        }
+    }
+    
+    func saveBabyInfo() {
+        UserDefaults.standard.set(SharedData.sharedData.babyInfo?.name, forKey: "name")
+        if let birthDate = SharedData.sharedData.babyInfo?.birthDate.toString() {
+            UserDefaults.standard.set(birthDate, forKey: "date")
+        }
+        if (SharedData.sharedData.babyInfo?.picture) != nil {
+            saveImage()
+        }
+    }
+    
+    func retrieveBabyInfo() {
+        if let babyName = UserDefaults.standard.string(forKey: "name"),
+           let birthDate = UserDefaults.standard.string(forKey: "date") {
+            nameTextField.text = babyName
+            birthDatePicker.date = birthDate.toDate() ?? Date()
+            finishButton.tintColor = UIColor.black
+            finishButton.isEnabled = true
+        } else {
+            finishButton.tintColor = UIColor.gray
+            finishButton.isEnabled = false
+        }
+        if let retrivedImage = loadImage() {
+            DispatchQueue.main.async {
+                self.imageView.image = retrivedImage
+            }
+        }
     }
 }
 
@@ -77,5 +109,30 @@ extension ViewController: UITextFieldDelegate {
 extension ViewController: addImageDelegate {
     func imageDidChoose(pickedImage: UIImage) {
         self.imageView.image = pickedImage
+    }
+    
+    func saveImage() {
+        guard let image = SharedData.sharedData.babyInfo?.picture,
+              let data = image.jpegData(compressionQuality: 1) else {
+            return
+        }
+        let fileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("babyImage.jpg")
+        do {
+            try data.write(to: fileURL)
+            print("Image saved successfully at \(fileURL)")
+        } catch {
+            print("Error saving image: \(error)")
+        }
+    }
+
+    func loadImage() -> UIImage? {
+        let fileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("babyImage.jpg")
+        do {
+            let imageData = try Data(contentsOf: fileURL)
+            return UIImage(data: imageData)
+        } catch {
+            print("Error loading image: \(error)")
+            return nil
+        }
     }
 }
